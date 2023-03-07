@@ -119,11 +119,15 @@ public class SecurityConfig {
 	
 	@Bean
 	public UserDetailsService userDetailsService() {
-		var user1 = User.withUsername("user")
-				.password("password")
-				.authorities("read", "test")
+		var user1 = User.withUsername("alex")
+				.password("123456")
+				.authorities("client")
 				.build();
-		return new InMemoryUserDetailsManager(user1);
+		var user2 = User.withUsername("maria")
+				.password("123456")
+				.authorities("client", "admin")
+				.build();
+		return new InMemoryUserDetailsManager(user1, user2);
 	}
 
 	@Bean
